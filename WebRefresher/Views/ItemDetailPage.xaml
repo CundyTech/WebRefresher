@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WebRefresher.Views.ItemDetailPage"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding DeleteItemCommand}" IconImageSource="dustbin.png" CommandParameter="{Binding Id}"  />
+    </ContentPage.ToolbarItems>
+    <StackLayout Spacing="20" Padding="15"  
+                 HorizontalOptions="FillAndExpand" 
+                 VerticalOptions="FillAndExpand">
+        <Label Text="Name:" FontSize="Medium" />
+        <Label Text="{Binding Name}" FontSize="Small"  Padding="10"/>
+        <Label Text="Url:" FontSize="Medium"  />
+        <Label Text="{Binding Url}" FontSize="Small"  Padding="10"/>
+        <Label Text="Refresh Interval" FontSize="Medium" />
+        <Label x:Name="DisplayLabel"
+               Text="{Binding Source={x:Reference slider},
+                              Path=Value,
+                              StringFormat='Webpage will be checked every {0:F0} seconds'}"
+               HorizontalOptions="StartAndExpand" Padding="10"/>
+        <Slider x:Name="slider" Value="{Binding RefreshInterval, Mode=TwoWay}" Maximum="360" Minimum="60" IsVisible="False"/>
+        <Label Text="Enabled:" FontSize="Medium" />
+        <StackLayout Orientation="Horizontal" Padding="10">
+            <Label Text="{Binding Enabled}" FontSize="Small"/>
+        </StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand"></StackLayout>
+        <StackLayout Orientation="Horizontal" >
+            <Button Text="Edit" Command="{Binding EditItemCommand}" CommandParameter="{Binding Id}" HorizontalOptions="FillAndExpand"></Button>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

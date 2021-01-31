@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WebRefresher.Views.NewItemPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="New Item"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="15" 
+                     HorizontalOptions="FillAndExpand" 
+                     VerticalOptions="FillAndExpand">
+            <Label Text="Web Page" FontSize="Medium" />
+            <Entry Text="{Binding Name, Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="Url" FontSize="Medium" />
+            <Editor Text="{Binding Url, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Label Text="Refresh Interval" FontSize="Medium" />
+            <Label x:Name="DisplayLabel"
+                   Text="{Binding Source={x:Reference slider},
+                              Path=Value,
+                              StringFormat='Webpage will be checked every {0:F0} seconds'}"
+                   HorizontalOptions="StartAndExpand" Padding="10"/>
+            <Slider x:Name="slider" Value="{Binding RefreshInterval, Mode=TwoWay}" Maximum="360" Minimum="60"/>
+            <Label Text="Enabled:" FontSize="Medium" />
+            <StackLayout Orientation="Horizontal" Padding="10">
+                <Label Text="{Binding Enabled}" FontSize="Small"/>
+                <Switch IsToggled="{Binding Enabled, Mode=TwoWay}"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand"></StackLayout>
+            <StackLayout Orientation="Horizontal" >
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
