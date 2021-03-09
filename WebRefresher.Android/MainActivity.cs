@@ -1,11 +1,14 @@
 ﻿using System;
 
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using WebRefresher.Services;
+using Xamarin.Forms;
 
 namespace WebRefresher.Droid
 {
@@ -29,5 +32,20 @@ namespace WebRefresher.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        //public void RefreshWebsites()
+        //{
+        //    MessagingCenter.Subscribe<StartLongRunningTaskMessage>(this, "StartLongRunningTaskMessage", message =>
+        //    {
+        //        var intent = new Intent(this, typeof(RefreshManager));
+        //        StartService(intent);
+        //    });
+
+        //    MessagingCenter.Subscribe<StopLongRunningTaskMessage>(this, "StopLongRunningTaskMessage", message =>
+        //    {
+        //        var intent = new Intent(this, typeof(RefreshManager));
+        //        StartService(intent);
+        //    });
+        //}
     }
 }

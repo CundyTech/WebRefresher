@@ -10,7 +10,7 @@ namespace WebRefresher.ViewModels
         public AboutViewModel()
         {
             Title = "About";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://github.com/dancundy"));
+            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://github.com/CundyTech/WebRefresher"));
         }
 
         public ICommand OpenWebCommand { get; }
